@@ -8,7 +8,9 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
 
 Paso 1: Instalar Angular CLI
+
 Abre la terminal en VS Code (Ctrl + `) y ejecuta:
+
 Esto instala Angular CLI de forma global en tu máquina.
 
 ```bash
