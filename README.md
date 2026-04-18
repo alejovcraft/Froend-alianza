@@ -3,21 +3,31 @@
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
 
 ## Development server
-
-Paso 1: Instalar Angular CLI:
-
+🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎
+👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+Paso 1: Instalar Angular CLI
 Abre la terminal en VS Code (Ctrl + `) y ejecuta:
+Esto instala Angular CLI de forma global en tu máquina.
 
 ```bash
 npm install -g @angular/cli
 ```
-Esto instala Angular CLI de forma global en tu máquina.
 
-To start a local development server, run:
+Paso 2: Verificar instalación
+Cuando termine de instalar(Paso 1), escribe:
+
+```bash
+ng version
+```
+
+Paso 3: Ejecutar tu proyecto
+Correr la aplicación Angular:
 
 ```bash
 ng serve
 ```
+Esto levantará el servidor de desarrollo y podrás abrir tu proyecto en el navegador en http://localhost:4200.
+👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
