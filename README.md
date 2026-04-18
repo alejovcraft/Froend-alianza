@@ -4,6 +4,15 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
+Paso 1: Instalar Angular CLI:
+
+Abre la terminal en VS Code (Ctrl + `) y ejecuta:
+
+```bash
+npm install -g @angular/cli
+```
+Esto instala Angular CLI de forma global en tu máquina.
+
 To start a local development server, run:
 
 ```bash
