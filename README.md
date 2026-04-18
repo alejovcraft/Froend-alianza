@@ -1,6 +1,7 @@
 # AlianzaFrontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+
 🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎
 ## Development server
 
@@ -28,6 +29,7 @@ Correr la aplicación Angular:
 ng serve
 ```
 Esto levantará el servidor de desarrollo y podrás abrir tu proyecto en el navegador en http://localhost:4200.
+
 👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
