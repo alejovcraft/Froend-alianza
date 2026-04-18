@@ -1,61 +1,82 @@
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
-  background-color: #002244; /* Azul Alianza */
+:host {
+    --alianza-azul: #004a99;
+    --alianza-dorado: #B8A26A;
+    --alianza-blanco: #ffffff;
+    display: block;
 }
 
-.login-box {
-  background-color: white;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  width: 300px;
-  text-align: center;
+/* Reemplazamos el 'body' por este wrapper para que cubra toda la pantalla */
+.login-wrapper {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                      url('/img/menuprincipal/bannerinferior.jpg'); /* ¡La ruta ya está lista para la carpeta public! */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    width: 100%;
 }
 
-.login-box h2 {
-  color: #002244;
-  margin-bottom: 5px;
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: var(--alianza-blanco); 
 }
 
-.input-group {
-  margin-bottom: 15px;
-  text-align: left;
+.login-card h2 {
+    color: var(--alianza-azul); 
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.input-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
+.login-card label {
+    color: var(--alianza-blanco);
 }
 
-.input-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #333;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #002244;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
+.form-control::placeholder {
+    color: #888;
 }
 
-button:hover {
-  background-color: #003366;
+.btn-login {
+    background-color: var(--alianza-dorado);
+    color: var(--alianza-blanco);
+    border-color: var(--alianza-dorado);
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.error-msg {
-  color: red;
-  font-size: 14px;
-  margin-top: 15px;
+.btn-login:hover {
+    background-color: #9A845C;
+    color: var(--alianza-blanco);
+    border-color: #9A845C;
+}
+
+.alert-danger {
+    margin-bottom: 1rem;
+    color: #fff;
+    background-color: rgba(220, 53, 69, 0.8);
+    border-color: rgba(220, 53, 69, 0.9);
+}
+
+.login-card .text-secondary {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.login-card .text-secondary:hover {
+    color: var(--alianza-blanco) !important;
 }
