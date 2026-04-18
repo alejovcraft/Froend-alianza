@@ -14,6 +14,11 @@ Esto instala Angular CLI de forma global en tu máquina.
 ```bash
 npm install -g @angular/cli
 ```
+Si sale <span style="color:red">Error</span>
+
+```bash
+npm install
+```
 
 Paso 2: Verificar instalación
 Cuando termine de instalar(Paso 1), escribe:
