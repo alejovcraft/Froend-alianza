@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth'; 
+import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router'; // <-- 1. Importamos el "chofer" (Router)
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule], 
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })

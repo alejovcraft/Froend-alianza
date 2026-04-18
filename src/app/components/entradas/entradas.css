@@ -1,0 +1,71 @@
+:host {
+    --alianza-azul: #002244;
+    --alianza-dorado: #B8A26A;
+    --alianza-blanco: #ffffff;
+    display: block;
+    padding-top: 56px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* El resto de tu CSS original */
+.navbar-brand { font-weight: bold; }
+.bg-primary { background-color: var(--alianza-azul) !important; }
+
+.footer {
+    background-color: var(--alianza-azul);
+    color: var(--alianza-blanco);
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1rem 0;
+}
+
+.combo-section {
+    position: relative;
+    /* Ajusta esta ruta a /img/ si tus fotos están en public */
+    background: url('/img/compraentrada/estadio2.jpg') center center / cover no-repeat;
+    color: white;
+}
+
+.combo-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4rem 0;
+}
+
+.combo-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.combo-logo { height: 60px; }
+
+.combo-card {
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-width: 800px;
+}
+
+.combo-card-logo { height: 60px; }
+
+.btn-comprar {
+    background-color: #B8A26A;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background-color: #a48f5f;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .combo-card { flex-direction: column; text-align: center; }
+    .btn-comprar { margin-top: 1rem; }
+}

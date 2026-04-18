@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" routerLink="/">⬅ Volver al Inicio</a>
+</nav>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; margin-top: 50px;">
+    <div class="card shadow-lg border-0" style="width: 100%; max-width: 700px; border-radius: 15px;">
+        <div class="card-header text-center text-white" style="background-color: #1a237e; border-radius: 15px 15px 0 0;">
+            <h3 class="my-2"><i class="fas fa-user-plus"></i> Hazte Íntimo</h3>
+            <p class="mb-1 small text-light">Únete a la familia blanquiazul</p>
+        </div>
+        
+        <div class="card-body p-4 bg-light">
+            <form (ngSubmit)="procesarRegistro()">
+                
+                <h5 class="text-secondary mb-3 border-bottom pb-2">Datos Personales</h5>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Nombres <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="datosRegistro.nombre" name="nombre" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Apellidos <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="datosRegistro.apellido" name="apellido" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label>DNI / Carné <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="datosRegistro.dni" name="dni" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Teléfono</label>
+                        <input type="text" class="form-control" [(ngModel)]="datosRegistro.telefono" name="telefono">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" class="form-control" [(ngModel)]="datosRegistro.email" name="email">
+                    </div>
+                </div>
+
+                <h5 class="text-secondary mt-4 mb-3 border-bottom pb-2">Datos de la Cuenta</h5>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Usuario (Nickname) <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="datosRegistro.username" name="username" placeholder="Ej: alejo1901" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Contraseña <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" [(ngModel)]="datosRegistro.password" name="password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg mt-4 font-weight-bold" style="background-color: #1a237e;">
+                    REGISTRARME AHORA
+                </button>
+            </form>
+            
+            <div class="text-center mt-3">
+                <small>¿Ya tienes cuenta? <a routerLink="/login" class="text-primary font-weight-bold">Inicia Sesión aquí</a></small>
+            </div>
+        </div>
+    </div>
+</div>
