@@ -20,4 +20,12 @@ export class EntradaService {
     const urlBusqueda = `http://localhost:9090/api/entradas/buscar/${id}`;
     return this.http.get<any>(urlBusqueda);
   }
+  actualizarEntrada(id: string, datosEntrada: any): Observable<any> {
+    return this.http.put(`http://localhost:9090/api/entradas/editar/${id}`, datosEntrada);
+  }
+
+  // Método para eliminar
+  eliminarEntrada(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:9090/api/entradas/eliminar/${id}`);
+  }
 }

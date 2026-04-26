@@ -1,0 +1,51 @@
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Panel de Administración - Entradas</span>
+    <a class="btn btn-outline-light" routerLink="/panel-proveedor">Volver al Panel</a>
+</nav>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestión de Partidos</h2>
+        <button class="btn btn-success"><i class="fas fa-plus"></i> Nuevo Partido</button>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Evento / Partido</th>
+                        <th>Fecha</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (partido of listaPartidos; track partido.idEntrada) {
+                        <tr>
+                            <td class="align-middle"><strong>{{ partido.idEntrada }}</strong></td>
+                            <td class="align-middle">{{ partido.evento }}</td>
+                            <td class="align-middle">{{ partido.fecha }}</td>
+                            <td class="align-middle text-success">S/ {{ partido.precio }}</td>
+                            <td class="align-middle">
+                                <span class="badge" [ngClass]="{'badge-success': partido.cantidadDisponible > 50, 'badge-danger': partido.cantidadDisponible <= 50}">
+                                    {{ partido.cantidadDisponible }}
+                                </span>
+                            </td>
+                            <td class="text-center align-middle">
+                                <button class="btn btn-sm btn-outline-primary mr-2" title="Editar">
+                                    ✏️ Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" title="Eliminar" (click)="borrarPartido(partido.idEntrada)">
+                                    🗑️ Borrar
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
