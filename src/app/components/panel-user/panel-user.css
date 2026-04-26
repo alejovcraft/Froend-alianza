@@ -1,0 +1,161 @@
+:root {
+    --alianza-azul: #B8A26A; /* Según tu diseño */
+    --alianza-dorado: #B8A26A;
+    --alianza-blanco: #ffffff;
+    --fondo-partidos: #2c2c2c; 
+    --texto-claro: #f0f0f0;
+    --linea-separadora: #555555;
+}
+
+/* IMPORTANTE: Compensar la barra de navegación fija */
+/* En Angular, usamos :host en lugar de :root para declarar variables del componente */
+:host {
+    /* ¡Colores corregidos! */
+    --alianza-azul: #002244;  /* Este es el verdadero Azul Íntimo */
+    --alianza-dorado: #B8A26A;
+    --alianza-blanco: #ffffff;
+    --fondo-partidos: #2c2c2c; 
+    --texto-claro: #f0f0f0;
+    --linea-separadora: #555555;
+
+    /* Propiedades para que la barra de navegación no tape el contenido */
+    display: block;
+    padding-top: 56px; 
+    background-color: #f8f9fa;
+}
+
+/* De aquí para abajo, dejas el resto de tu CSS intacto (navbar-brand, jumbotron, etc.) */
+
+.navbar-brand { font-weight: bold; }
+
+.jumbotron {
+    background-color: var(--alianza-azul);
+    color: var(--alianza-blanco);
+    padding: 5rem 2rem;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/menuprincipal/baner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-intimo {
+    background-color: var(--alianza-dorado);
+    color: var(--alianza-blanco);
+    border-color: var(--alianza-dorado);
+    font-weight: bold;
+    padding: 10px 30px;
+    font-size: 1.25rem;
+    transition: background-color 0.3s;
+}
+.btn-intimo:hover {
+    background-color: #9A845C;
+    color: var(--alianza-blanco);
+    border-color: #9A845C;
+}
+
+.bg-primary { background-color: var(--alianza-azul) !important; }
+
+.seccion-partidos {
+    background-color: var(--fondo-partidos);
+    color: var(--texto-claro);
+    padding: 3rem 0;
+}
+.partido-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.partido-detalle {
+    border-bottom: 1px solid var(--linea-separadora);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+.equipo-nombre {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+.vs-texto {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.partido-info-footer {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-top: 1rem;
+}
+.escudo-partido {
+    width: 90px;  
+    height: 90px; 
+    object-fit: contain; 
+    margin-bottom: 10px;
+}
+
+.seccion-noticias {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/menuprincipal/fondon.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 3rem 0;
+    color: var(--alianza-blanco); 
+}
+
+.titulo-noticias {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--alianza-blanco); 
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--alianza-dorado);
+    display: inline-block;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.card-noticia {
+    background-color: rgba(255, 255, 255, 0.9); 
+    transition: transform 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-title-link {
+    color: #343a40; 
+}
+.card-title-link:hover {
+    color: var(--alianza-azul);
+    text-decoration: none;
+}
+
+.banner-entradas {
+    background-color: var(--alianza-azul); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/menuprincipal/entradas.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 5rem 0; 
+    text-align: center;
+    color: var(--alianza-blanco);
+    margin-bottom: 0; 
+}
+
+.btn-entradas {
+    background-color: var(--alianza-dorado);
+    color: white; 
+    border-color: var(--alianza-dorado);
+    font-weight: bold;
+    padding: 12px 40px;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s;
+}
+.btn-entradas:hover {
+    background-color: #9A845C; 
+    color: var(--alianza-blanco); 
+    border-color: #9A845C;
+}

@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" routerLink="/entradas">⬅ Volver a Entradas</a>
+</nav>
+
+<div class="container" style="margin-top: 100px; margin-bottom: 50px;">
+    
+    <div *ngIf="!entrada" class="text-center mt-5">
+        <h3 class="text-muted">Cargando información del evento...</h3>
+    </div>
+
+    <div *ngIf="entrada" class="row">
+        
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3 class="mb-4 text-primary"><i class="fas fa-ticket-alt"></i> Personaliza tus Entradas</h3>
+                    
+                    <div class="d-flex align-items-center mb-4">
+                        <h5 class="m-0 mr-3">¿Cuántas entradas deseas?</h5>
+                        <input type="number" class="form-control text-center" style="width: 80px;" 
+                               [ngModel]="cantidadSeleccionada" 
+                               (ngModelChange)="cambiarCantidad($event)" 
+                               min="1" [max]="entrada.cantidadDisponible">
+                    </div>
+
+                    @for (dueno of listaDuenos; track $index) {
+                        <div class="border rounded p-3 mb-3 bg-light">
+                            <h5 class="text-secondary border-bottom pb-2 mb-3">
+                                Asistente {{ $index + 1 }}
+                            </h5>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label>Nombres</label>
+                                    <input type="text" class="form-control" [(ngModel)]="dueno.nombre" placeholder="Nombres completos">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Apellido Paterno</label>
+                                    <input type="text" class="form-control" [(ngModel)]="dueno.apellido_p" placeholder="Paterno">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Apellido Materno</label>
+                                    <input type="text" class="form-control" [(ngModel)]="dueno.apellido_m" placeholder="Materno">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label>DNI / Carné</label>
+                                    <input type="text" class="form-control" [(ngModel)]="dueno.dni" placeholder="Doc. Identidad">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" [(ngModel)]="dueno.telefono" placeholder="Celular">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Género</label>
+                                    <select class="form-control" [(ngModel)]="dueno.genero">
+                                        <option value="">Seleccione...</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-primary">
+                <div class="card-header bg-primary text-white font-weight-bold">
+                    Resumen de Compra
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ entrada.evento }}</h5>
+                    <p class="card-text text-muted small"><i class="far fa-calendar-alt"></i> Fecha: {{ entrada.fecha }}</p>
+                    <p class="card-text text-muted small"><i class="fas fa-map-marker-alt"></i> Zona: {{ entrada.ubicacion?.lugar }}</p>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between">
+                        <span>Cantidad:</span>
+                        <strong>{{ cantidadSeleccionada }} x S/ {{ entrada.precio }}</strong>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="h5 m-0">Total a Pagar:</span>
+                        <span class="h4 text-success m-0 font-weight-bold">S/ {{ cantidadSeleccionada * entrada.precio }}</span>
+                    </div>
+
+                    <button class="btn btn-success btn-lg btn-block font-weight-bold" (click)="procesarCompra()">
+                        PAGAR AHORA
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

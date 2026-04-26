@@ -1,19 +1,104 @@
-<div class="mural-container">
-  <nav class="navbar">
-    <div class="logo">ALIANZA LIMA</div>
-    <div class="menu">
-      <a routerLink="/login">Iniciar Sesión</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" routerLink="/">Alianza Lima</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/entradas">Entradas</a></li>
+            <li class="nav-item"><a class="nav-link" style="cursor: pointer;" (click)="intentarComprar()">Productos</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-light" routerLink="/login" style="border-radius: 0.25rem;">Login</a> 
+            </li>
+        </ul>
     </div>
-  </nav>
+</nav>
 
-  <div class="hero">
-    <h1>Bienvenidos al Templo Blanquiazul</h1>
-    <p>Mira los próximos partidos y asegura tu lugar en la tribuna.</p>
-    
-    <div class="partido-card">
-      <h3>Próximo Partido</h3>
-      <p>Alianza Lima vs Universitario</p>
-      <button (click)="intentarComprar()">Comprar Entradas</button>
+<div class="jumbotron text-center">
+    <h1 class="display-4">¡Bienvenidos al Portal Blanquiazul!</h1>
+    <p class="lead">Regístrate o inicia sesión para acceder a toda la información, comprar entradas y más.</p>
+    <hr class="my-4" style="border-top: 1px solid white;">
+    <a class="btn btn-intimo btn-lg" routerLink="/login" role="button">Hazte Íntimo</a>
+</div>
+
+<div class="seccion-partidos">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mx-auto">
+                <div class="partido-header">PRÓXIMO PARTIDO</div>
+                <div class="text-muted small partido-detalle">LIGA 1 - CLAUSURA - FECHA 17</div>
+                
+                <div class="row align-items-center justify-content-center mt-4">
+                    <div class="col-4">
+                        <img src="/img/menuprincipal/alianza.png" alt="Escudo Alianza Lima" class="escudo-partido"> 
+                        <div class="equipo-nombre">ALIANZA LIMA</div>
+                    </div>
+                    <div class="col-2"><span class="vs-texto">VS</span></div>
+                    <div class="col-4">
+                        <img src="/img/menuprincipal/melgar.png" alt="Escudo Rival" class="escudo-partido">
+                        <div class="equipo-nombre">MELGAR</div>
+                    </div>
+                </div>
+
+                <div class="partido-info-footer">
+                    <span>Viernes 31 OCTUBRE</span> | <span>8:00 PM</span> | <span>Estadio Alejandro Villanueva</span>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<div class="banner-entradas">
+    <h2 class="display-4">¡Asegura tu lugar en Matute!</h2>
+    <p class="lead">Compra tus entradas para el próximo encuentro y alienta al equipo de tus amores.</p>
+    <a class="btn btn-entradas" (click)="intentarComprar()" role="button" style="cursor: pointer;">ENTRADAS</a>
+</div>
+
+<div class="seccion-noticias">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="titulo-noticias">NOTICIAS RECIENTES</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="https://clubalianzalima.com.pe" target="_blank" class="card-noticia">
+                    <img class="card-img-top" src="/img/menuprincipal/noticia1.jpg" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <small class="text-muted">10/20/25, 5:04 PM</small>
+                        <h5 class="card-title card-title-link mt-1">ACREDITACIÓN NOCHE BLANQUIAZUL</h5>
+                        <p class="card-text small text-secondary">Los interesados deberán completar el siguiente formulario...</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://clubalianzalima.com.pe" target="_blank" class="card-noticia">
+                    <img class="card-img-top" src="/img/menuprincipal/noticia3.png" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <small class="text-muted">10/17/25, 9:18 PM</small>
+                        <h5 class="card-title card-title-link mt-1">TERCERA EDICIÓN VÓLEY</h5>
+                        <p class="card-text small text-secondary">La Noche Blanquiazul de Vóley es una realidad...</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://clubalianzalima.com.pe" target="_blank" class="card-noticia">
+                    <img class="card-img-top" src="/img/menuprincipal/noticia2.png" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <small class="text-muted">10/18/25, 2:52 PM</small>
+                        <h5 class="card-title card-title-link mt-1">ACUERDO ESTRATÉGICO TRUST</h5>
+                        <p class="card-text small text-secondary">Un nuevo aliado se suma a la familia de Alianza Lima...</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div class="text-center py-3" style="background-color: #B8A26A; color: white; font-size: 0.8rem;">
+    &copy; 2026 Club Alianza Lima. Todos los derechos reservados.
 </div>
