@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,6 +18,15 @@ export class VentaService {
   }
 
   obtenerMisEntradas(username: string): Observable<any[]> {
-  return this.http.get<any[]>(`http://localhost:9090/api/ventas/usuario/${username}`);
-}
+    // 1. Buscamos el fotocheck (token) en el bolsillo (localStorage)
+    const token = localStorage.getItem('token_alianza');
+    
+    // 2. Lo preparamos para enviarlo
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    // 3. Enviamos la petición CON el token
+    return this.http.get<any[]>(`http://localhost:9090/api/ventas/usuario/${username}`, { headers: headers });
+  }
 }

@@ -1,0 +1,51 @@
+
+<div class="tienda-container">
+
+  <!-- 🔥 BANNER -->
+  <div class="banner">
+    <div class="slides"
+         [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      
+      <div class="slide" *ngFor="let img of imagenes">
+    <img [src]="img" alt="Banner">
+</div>
+
+    </div>
+  </div>
+
+  <!-- 🏷️ CATEGORÍAS -->
+  <h2 class="titulo">Categorías</h2>
+
+  <div class="categorias">
+    <div class="cat-card" *ngFor="let c of categorias">
+      <img [src]="c.img">
+      <h3>{{c.nombre}}</h3>
+      <button (click)="filtrar(c.tipo)">Ver productos</button>
+    </div>
+  </div>
+
+  <button class="btn-todos" (click)="mostrarTodos()">
+    Ver todos
+  </button>
+
+  <!-- 🛒 PRODUCTOS -->
+  <h2 class="titulo">Productos</h2>
+
+  <div class="grid">
+    <div class="card" *ngFor="let p of productosFiltrados">
+
+      <div class="img-container">
+        <img [src]="p.imagen">
+      </div>
+
+      <div class="info">
+        <h3>{{p.nombre}}</h3>
+        <p>{{p.descripcion}}</p>
+        <p class="precio">S/. {{p.precio}}</p>
+        <button class="btn">Comprar</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

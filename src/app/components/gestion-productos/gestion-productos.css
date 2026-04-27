@@ -1,0 +1,6 @@
+.img-producto {
+  width: 180px;        /* antes 100px */
+  height: 180px;       /* antes 100px */
+  object-fit: cover;
+  border-radius: 8px;
+}

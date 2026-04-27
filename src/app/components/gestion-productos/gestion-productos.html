@@ -1,0 +1,149 @@
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Panel de Administración - Productos</span>
+    <a class="btn btn-outline-light" routerLink="/panel-proveedor">Volver al Panel</a>
+</nav>
+
+<div class="container mt-5">
+    <!-- FORMULARIO NUEVO PRODUCTO -->
+    <div class="card shadow mb-5" *ngIf="mostrarFormulario">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Crear Nuevo Producto</h4>
+
+            <button class="btn btn-sm btn-light" (click)="cerrarFormulario()">
+                ✖
+            </button>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <!-- ID -->
+                <div class="col-md-6 mb-3">
+                    <label><strong>ID Producto</strong></label>
+                    <input type="text" class="form-control" [(ngModel)]="nuevoProducto.id_producto"
+                        placeholder="Ejemplo: P001">
+                </div>
+
+                <!-- Nombre -->
+                <div class="col-md-6 mb-3">
+                    <label><strong>Nombre</strong></label>
+                    <input type="text" class="form-control" [(ngModel)]="nuevoProducto.nombre"
+                        placeholder="Nombre del producto">
+                </div>
+
+                <!-- Descripción -->
+                <div class="col-md-12 mb-3">
+                    <label><strong>Descripción</strong></label>
+                    <textarea class="form-control" rows="3" [(ngModel)]="nuevoProducto.descripcion"
+                        placeholder="Descripción del producto">
+                    </textarea>
+                </div>
+
+                <!-- Precio -->
+                <div class="col-md-4 mb-3">
+                    <label><strong>Precio (S/)</strong></label>
+                    <input type="number" class="form-control" [(ngModel)]="nuevoProducto.precio">
+                </div>
+
+                <!-- Stock -->
+                <div class="col-md-4 mb-3">
+                    <label><strong>Stock</strong></label>
+                    <input type="number" class="form-control" [(ngModel)]="nuevoProducto.stock">
+                </div>
+
+                <!-- Imagen -->
+                <div class="col-md-4 mb-3">
+                    <label><strong>URL Imagen</strong></label>
+                    <input type="text" class="form-control" [(ngModel)]="nuevoProducto.imagen"
+                        placeholder="https://imagen.jpg">
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="text-right">
+                <button class="btn btn-secondary mr-2" (click)="cerrarFormulario()">
+                    Cancelar
+                </button>
+
+                <button class="btn btn-success" (click)="guardarProducto()">
+                    Guardar Producto
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- CABECERA -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestión de Productos</h2>
+
+        <button class="btn btn-success" (click)="abrirFormulario()">
+
+            <i class="fas fa-plus"></i>
+            Registrar Nuevo Producto
+        </button>
+    </div>
+
+
+    <div class="card shadow">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Imagen</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of listaProductos">
+                        <td><strong>{{ producto.id_producto }}</strong></td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td class="text-success">S/ {{ producto.precio }}</td>
+
+                        <td>
+                            <span class="badge" [ngClass]="{
+                'badge-success': producto.stock > 50,
+                'badge-danger': producto.stock <= 50
+            }">
+                                {{ producto.stock }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <img [src]="producto.imagen" width="50" height="50" style="object-fit: cover;">
+                        </td>
+
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="editarProducto(producto)">
+                                ✏️ Editar
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-danger"
+                                (click)="eliminarProducto(producto.id_producto)">
+                                🗑️ Borrar
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr *ngIf="listaProductos.length === 0">
+                        <td colspan="7" class="text-center py-5 text-muted">
+                            <h5>No hay productos registrados en el sistema.</h5>
+                            <p>Haz clic en "Registrar Nuevo Producto" para comenzar.</p>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

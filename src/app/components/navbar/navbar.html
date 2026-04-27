@@ -7,15 +7,23 @@
     
     <div class="collapse navbar-collapse" id="navUser">
         <ul class="navbar-nav mr-auto align-items-center">
-            <li class="nav-item"><a class="nav-link" routerLink="/panel-user">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/entradas">Entradas</a></li>
+            <li class="nav-item">
+                <a class="nav-link font-weight-bold" routerLink="/panel-user" style="color: #B8A26A;">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link font-weight-bold" routerLink="/entradas" style="color: #B8A26A;">Entradas</a>
+            </li>
             
-            <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Carrito</a></li>
+            <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="#" style="color: #B8A26A;">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="#" style="color: #B8A26A;">Carrito</a>
+            </li>
             
             <li class="nav-item" *ngIf="nombreUsuario">
-                <a class="nav-link" routerLink="/mis-entradas" style="color: #B8A26A; font-weight: bold;">
-                    🎟️ Mis Entradas
+                <a class="nav-link font-weight-bold" routerLink="/mis-entradas" style="color: #B8A26A;">
+                    Mis Entradas
                 </a>
             </li>
         </ul>
@@ -45,20 +53,13 @@
 
 <nav *ngIf="rolUsuario === 'ROLE_PROVEEDOR'" class="navbar navbar-expand-lg navbar-dark fixed-top shadow" style="background-color: #212529; border-bottom: 3px solid #B8A26A;">
     <a class="navbar-brand font-weight-bold" routerLink="/panel-proveedor">Portal Proveedores</a>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navProv">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navProv">
+    <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" routerLink="/panel-proveedor">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link text-warning font-weight-bold" routerLink="/gestion-entradas">🎟️ Gestión de Entradas</a></li>
+            <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="/panel-proveedor" style="color: #B8A26A;">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="/gestion-entradas" style="color: #B8A26A;">Gestión de Entradas</a></li>
         </ul>
-        <ul class="navbar-nav align-items-center">
-            <li class="nav-item text-light mr-4">
-                Proveedor: <strong class="ml-1">{{ nombreUsuario }}</strong>
-            </li>
+        <ul class="navbar-nav align-items-center text-white">
+            <li class="nav-item mr-4">Proveedor: <strong>{{ nombreUsuario }}</strong></li>
             <li class="nav-item">
                 <button class="btn btn-outline-danger btn-sm" (click)="cerrarSesion()">Salir</button> 
             </li>

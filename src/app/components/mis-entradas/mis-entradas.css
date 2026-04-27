@@ -1,19 +1,31 @@
 .ticket-card {
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
+    transition: transform 0.2s;
 }
 
-.ticket-header {
-    background-color: #001a3b; /* Azul Alianza */
-    padding: 15px;
+.ticket-card:hover {
+    transform: translateY(-5px);
+}
+
+.ticket-top {
+    background: #001a3b; /* Azul Alianza */
     border-bottom: 2px dashed #ffffff;
 }
 
-.badge-warning {
+.badge-gold {
     background-color: #B8A26A; /* Dorado */
     color: #000;
+    font-weight: bold;
+    font-size: 0.7rem;
 }
 
-.ticket-body {
-    border-left: 5px solid #B8A26A;
+.text-primary {
+    color: #001a3b !important;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    border-radius: 8px;
 }
