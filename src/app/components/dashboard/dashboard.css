@@ -2,68 +2,50 @@
     --alianza-azul: #002244; /* Azul Alianza */
     --alianza-dorado: #B8A26A;
     --alianza-blanco: #ffffff;
-    --fondo-partidos: #2c2c2c;
     --texto-claro: #f0f0f0;
     --linea-separadora: #555555;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .navbar-brand { font-weight: bold; }
 .bg-primary { background-color: #002244 !important; }
 
-.jumbotron {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+.jumbotron-admin {
+   background-image: linear-gradient(rgba(0, 34, 68, 0.85), rgba(0, 34, 68, 0.85)), 
                       url('/img/menuprincipal/baner.jpg');
-    background-color: var(--alianza-azul);
-    color: var(--alianza-blanco);
-    padding: 5rem 2rem;
-    margin-bottom: 0;
-    border-radius: 0;
     background-size: cover;
     background-position: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.btn-intimo {
-    background-color: var(--alianza-dorado);
-    color: var(--alianza-blanco);
-    border-color: var(--alianza-dorado);
-    font-weight: bold;
-    padding: 10px 30px;
-}
-
-.seccion-partidos {
-    background-color: var(--fondo-partidos);
-    color: var(--texto-claro);
+    color: white;
     padding: 3rem 0;
+    border-bottom: 5px solid var(--alianza-dorado);
 }
 
-.escudo-partido {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
+
+.card-stat {
+    transition: transform 0.3s;
+    border-radius: 15px;
+}
+.card-stat:hover {
+    transform: translateY(-5px);
 }
 
-.seccion-noticias {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('/img/menuprincipal/fondon.jpg');
+.banner-gestion {
+    background-color: var(--alianza-azul);
+    background-image: url('/img/menuprincipal/fondon.jpg');
+    background-blend-mode: overlay;
     background-size: cover;
-    padding: 3rem 0;
-    color: var(--alianza-blanco);
 }
 
-.banner-entradas {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('/img/menuprincipal/entradas.png');
-    background-size: cover;
-    padding: 5rem 0;
-    text-align: center;
-    color: var(--alianza-blanco);
-}
-
-.btn-entradas {
+.btn-dorado {
     background-color: var(--alianza-dorado);
     color: white;
+    border: none;
     font-weight: bold;
-    padding: 12px 40px;
-    font-size: 1.5rem;
+}
+
+.btn-dorado:hover {
+    background-color: #a38f5a;
+    color: white;
 }
