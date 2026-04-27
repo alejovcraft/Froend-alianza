@@ -2,7 +2,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Navbar } from '../navbar/navbar';
+import { Navbar } from '../navbar/navbar';  
 import { EntradaService } from '../../services/entrada'; 
 
 @Component({
