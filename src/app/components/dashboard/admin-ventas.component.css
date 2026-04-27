@@ -15,6 +15,10 @@
     margin-top: 56px; /* Altura del navbar */
 }
 
+.navbar{
+    border-bottom: solid 2px #B8A26A;
+}
+
 /* Tarjetas de Indicadores (Estilo Dashboard) */
 .card {
     border: none;
