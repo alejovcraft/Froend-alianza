@@ -1,18 +1,23 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { EntradaService } from '../../services/entrada';
 
 @Component({
   selector: 'app-gestion-entradas',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './gestion-entradas.html',
   styleUrls: ['./gestion-entradas.css']
 })
 export class GestionEntradas implements OnInit {
   
   listaPartidos: any[] = [];
+
+  mostrarFormulario: boolean = false;
+  esEdicion: boolean = false;
+  partidoActual: any = {};  
 
  constructor(
     private entradaService: EntradaService,
@@ -21,6 +26,54 @@ export class GestionEntradas implements OnInit {
 
   ngOnInit(): void {
     this.cargarTabla();
+  }
+
+  abrirNuevoPartido() {
+    this.esEdicion = false;
+    this.partidoActual = { 
+      evento: '', 
+      fecha: '', 
+      precio: 0, 
+      cantidadDisponible: 0,
+      // IMPORTANTE: Inicializar el objeto para que el [(ngModel)] tenga donde escribir
+      ubicacion: { idUbicacion: 'Sur' } 
+    };
+    this.mostrarFormulario = true;
+  }
+
+  abrirEditar(partido: any) {
+    this.esEdicion = true;
+    // Si por alguna razón el partido de la base de datos no tiene ubicación, se la creamos
+    this.partidoActual = { 
+      ...partido, 
+      ubicacion: partido.ubicacion ? { ...partido.ubicacion } : { idUbicacion: 'Sur' } 
+    };
+    this.mostrarFormulario = true;
+  }
+
+  cancelarFormulario() {
+    this.mostrarFormulario = false;
+  }
+
+  guardarPartido() {
+    if (this.esEdicion) {
+      // Editar
+      this.entradaService.actualizarEntrada(this.partidoActual.idEntrada, this.partidoActual).subscribe({
+        next: (res) => { alert("✅ " + res.mensaje); this.finalizarGuardado(); },
+        error: (err) => alert("❌ Error al editar")
+      });
+    } else {
+      // Crear Nuevo
+      this.entradaService.crearEntrada(this.partidoActual).subscribe({
+        next: (res) => { alert("🎉 " + res.mensaje); this.finalizarGuardado(); },
+        error: (err) => alert("❌ Error al crear")
+      });
+    }
+  }
+
+  finalizarGuardado() {
+    this.mostrarFormulario = false;
+    this.cargarTabla(); // Recargamos para ver los cambios
   }
 
   cargarTabla() {

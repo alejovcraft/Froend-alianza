@@ -1,0 +1,51 @@
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Mis Entradas</span>
+    <a class="btn btn-outline-light" routerLink="/panel-user">Volver al Inicio</a>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Historial de Compras</h2>
+
+    <div *ngIf="cargando" class="text-center py-5">
+        <div class="spinner-border text-primary"></div>
+        <p>Buscando tus entradas...</p>
+    </div>
+
+    <div class="row" *ngIf="!cargando">
+        <div class="col-12 text-center py-5" *ngIf="compras.length === 0">
+            <h4 class="text-muted">Aún no tienes entradas compradas.</h4>
+            <a routerLink="/entradas" class="btn btn-primary mt-3">Ver Partidos Disponibles</a>
+        </div>
+
+        <div class="col-md-6 mb-4" *ngFor="let venta of compras">
+            <div class="ticket-card shadow-sm border-0">
+                <div class="ticket-header">
+                    <span class="badge badge-warning">E-TICKET</span>
+                    <h5 class="mb-0 mt-2 text-white">{{ venta.entrada.evento }}</h5>
+                </div>
+                <div class="ticket-body p-3 bg-white">
+                    <div class="row">
+                        <div class="col-6">
+                            <small class="text-muted d-block text-uppercase">Fecha</small>
+                            <strong>{{ venta.entrada.fecha }}</strong>
+                        </div>
+                        <div class="col-6 text-right">
+                            <small class="text-muted d-block text-uppercase">Zona</small>
+                            <strong>{{ venta.entrada.ubicacion.idUbicacion }}</strong>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">Entradas: {{ venta.cantidad }}</small>
+                            <h4 class="text-primary mb-0">S/ {{ venta.total }}</h4>
+                        </div>
+                        <button class="btn btn-danger btn-sm" (click)="generarPDF(venta)">
+                            <i class="fas fa-file-pdf mr-1"></i> Descargar PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -28,4 +28,7 @@ export class EntradaService {
   eliminarEntrada(id: string): Observable<any> {
     return this.http.delete(`http://localhost:9090/api/entradas/eliminar/${id}`);
   }
+  crearEntrada(datosEntrada: any): Observable<any> {
+    return this.http.post(`http://localhost:9090/api/entradas/crear`, datosEntrada);
+  }
 }

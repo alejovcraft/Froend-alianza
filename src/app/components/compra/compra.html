@@ -1,60 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" routerLink="/entradas">⬅ Volver a Entradas</a>
-</nav>
+<div class="compra-bg">
+    <nav class="navbar navbar-dark navbar-alianza fixed-top">
+        <a class="navbar-brand font-weight-bold" routerLink="/entradas">
+            <i class="fas fa-arrow-left mr-2"></i> Volver a Entradas
+        </a>
+    </nav>
 
-<div class="container" style="margin-top: 100px; margin-bottom: 50px;">
-    
-    <div *ngIf="!entrada" class="text-center mt-5">
-        <h3 class="text-muted">Cargando información del evento...</h3>
-    </div>
-
-    <div *ngIf="entrada" class="row">
-        
-        <div class="col-md-8">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h3 class="mb-4 text-primary"><i class="fas fa-ticket-alt"></i> Personaliza tus Entradas</h3>
+    <div class="container" style="margin-top: 40px;" *ngIf="entrada">
+        <div class="row">
+            
+            <div class="col-lg-8 mb-4">
+                <div class="glass-form">
+                    <h3 class="titulo-personaliza">Personaliza tus Entradas</h3>
                     
-                    <div class="d-flex align-items-center mb-4">
-                        <h5 class="m-0 mr-3">¿Cuántas entradas deseas?</h5>
-                        <input type="number" class="form-control text-center" style="width: 80px;" 
-                               [ngModel]="cantidadSeleccionada" 
+                    <div class="form-group d-flex align-items-center mb-4">
+                        <label class="font-weight-bold mr-3 mb-0" style="font-size: 1.1rem;">
+                            ¿Cuántas entradas deseas? <small class="text-danger ml-2">(Máximo 4)</small>
+                        </label>
+                        <input type="number" class="form-control text-center font-weight-bold" 
+                               style="width: 80px; border-radius: 8px;" 
+                               [(ngModel)]="cantidadSeleccionada" 
                                (ngModelChange)="cambiarCantidad($event)" 
-                               min="1" [max]="entrada.cantidadDisponible">
+                               min="1" max="4">
                     </div>
 
-                    @for (dueno of listaDuenos; track $index) {
-                        <div class="border rounded p-3 mb-3 bg-light">
-                            <h5 class="text-secondary border-bottom pb-2 mb-3">
-                                Asistente {{ $index + 1 }}
-                            </h5>
+                    <div class="card border-0 shadow-sm mb-4" style="background-color: #f8f9fa;" *ngFor="let dueno of listaDuenos; let i = index">
+                        <div class="card-body">
+                            <h5 class="text-secondary mb-3 border-bottom pb-2">Asistente {{ i + 1 }}</h5>
                             
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label>Nombres</label>
-                                    <input type="text" class="form-control" [(ngModel)]="dueno.nombre" placeholder="Nombres completos">
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label class="small text-muted font-weight-bold">Nombres</label>
+                                    <input type="text" class="form-control" placeholder="Nombres completos" [(ngModel)]="dueno.nombre">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Apellido Paterno</label>
-                                    <input type="text" class="form-control" [(ngModel)]="dueno.apellido_p" placeholder="Paterno">
+                                <div class="col-md-4 form-group">
+                                    <label class="small text-muted font-weight-bold">Apellido Paterno</label>
+                                    <input type="text" class="form-control" placeholder="Paterno" [(ngModel)]="dueno.apellido_p">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Apellido Materno</label>
-                                    <input type="text" class="form-control" [(ngModel)]="dueno.apellido_m" placeholder="Materno">
+                                <div class="col-md-4 form-group">
+                                    <label class="small text-muted font-weight-bold">Apellido Materno</label>
+                                    <input type="text" class="form-control" placeholder="Materno" [(ngModel)]="dueno.apellido_m">
                                 </div>
                             </div>
                             
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label>DNI / Carné</label>
-                                    <input type="text" class="form-control" [(ngModel)]="dueno.dni" placeholder="Doc. Identidad">
+                            <div class="row mt-2">
+                                <div class="col-md-4 form-group">
+                                    <label class="small text-muted font-weight-bold">DNI / Carné</label>
+                                    <input type="text" class="form-control" placeholder="Doc. Identidad" [(ngModel)]="dueno.dni">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Teléfono</label>
-                                    <input type="text" class="form-control" [(ngModel)]="dueno.telefono" placeholder="Celular">
+                                <div class="col-md-4 form-group">
+                                    <label class="small text-muted font-weight-bold">Teléfono</label>
+                                    <input type="text" class="form-control" placeholder="Celular" [(ngModel)]="dueno.telefono">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Género</label>
+                                <div class="col-md-4 form-group">
+                                    <label class="small text-muted font-weight-bold">Género</label>
                                     <select class="form-control" [(ngModel)]="dueno.genero">
                                         <option value="">Seleccione...</option>
                                         <option value="M">Masculino</option>
@@ -63,42 +61,96 @@
                                 </div>
                             </div>
                         </div>
-                    }
-
+                    </div>
+                    
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm border-primary">
-                <div class="card-header bg-primary text-white font-weight-bold">
-                    Resumen de Compra
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ entrada.evento }}</h5>
-                    <p class="card-text text-muted small"><i class="far fa-calendar-alt"></i> Fecha: {{ entrada.fecha }}</p>
-                    <p class="card-text text-muted small"><i class="fas fa-map-marker-alt"></i> Zona: {{ entrada.ubicacion?.lugar }}</p>
+            <div class="col-lg-4">
+                <div class="glass-summary sticky-top" style="top: 90px;">
+                    <h5 class="summary-header"><i class="fas fa-receipt mr-2"></i> Resumen de Compra</h5>
+                    
+                    <h4 class="font-weight-bold mb-1">{{ entrada.evento }}</h4>
+                    <p class="small text-light mb-3">Fecha: {{ entrada.fecha }}</p>
+                    
+                    <p class="text-gold font-weight-bold mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i> Zona: {{ entrada.ubicacion?.idUbicacion || 'General' }}
+                    </p>
                     
                     <hr>
                     
-                    <div class="d-flex justify-content-between">
-                        <span>Cantidad:</span>
-                        <strong>{{ cantidadSeleccionada }} x S/ {{ entrada.precio }}</strong>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-light h6 mb-0">Cantidad:</span>
+                        <span class="font-weight-bold h5 mb-0">{{ cantidadSeleccionada }} x S/ {{ entrada.precio }}</span>
                     </div>
                     
                     <hr>
                     
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <span class="h5 m-0">Total a Pagar:</span>
-                        <span class="h4 text-success m-0 font-weight-bold">S/ {{ cantidadSeleccionada * entrada.precio }}</span>
+                    <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+                        <span class="h5 mb-0">Total a Pagar:</span>
+                        <span class="h3 text-success font-weight-bold mb-0">S/ {{ cantidadSeleccionada * entrada.precio }}</span>
                     </div>
-
-                    <button class="btn btn-success btn-lg btn-block font-weight-bold" (click)="procesarCompra()">
-                        PAGAR AHORA
+                    
+                    <button class="btn btn-pagar btn-block" (click)="procesarCompra()">
+                        <i class="fas fa-lock mr-2"></i> PAGAR AHORA
                     </button>
+                    <div class="text-center mt-3">
+                        <small class="text-muted"><i class="fas fa-shield-alt mr-1"></i> Pago 100% Seguro</small>
+                    </div>
                 </div>
             </div>
-        </div>
+<div class="modal fade" id="boletaModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white text-center d-block pt-4">
+                <h4 class="modal-title font-weight-bold">COMPROBANTE DE PAGO</h4>
+                <p class="small mb-0">Club Alianza Lima - RUC: 20100045678</p>
+            </div>
+            
+            <div class="modal-body p-4" *ngIf="entrada">
+                <div class="text-center mb-4">
+                    <h5 class="font-weight-bold text-primary">{{ entrada.evento }}</h5>
+                    <p class="text-muted mb-1">{{ entrada.fecha }} | Zona: {{ entrada.ubicacion?.idUbicacion }}</p>
+                    <hr>
+                </div>
 
+                <div class="row mb-2">
+                    <div class="col-7 text-muted">Cantidad de Entradas:</div>
+                    <div class="col-5 text-right font-weight-bold">{{ cantidadSeleccionada }}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-7 text-muted">Precio Unitario:</div>
+                    <div class="col-5 text-right font-weight-bold">S/ {{ entrada.precio }}</div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-7 h5 font-weight-bold">TOTAL PAGADO:</div>
+                    <div class="col-5 text-right h5 font-weight-bold text-success">S/ {{ cantidadSeleccionada * entrada.precio }}</div>
+                </div>
+
+                <div class="bg-light p-3 rounded mb-4">
+                    <p class="small font-weight-bold text-uppercase mb-2 text-secondary">Titulares de las Entradas:</p>
+                    <ul class="list-unstyled mb-0">
+                        <li *ngFor="let a of listaDuenos; let i = index" class="small border-bottom py-1">
+                            {{ i + 1 }}. {{ a.nombre }} {{ a.apellido_p }} - DNI: {{ a.dni }}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-center">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=AL-VENTA-12345" alt="QR" class="mb-2">
+                    <p class="small text-muted">Presenta este código en la puerta del estadio</p>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-primary btn-block py-2 font-weight-bold" (click)="irAMisEntradas()">
+                    <i class="fas fa-check-circle mr-2"></i> ENTENDIDO
+                </button>
+            </div>
+        </div>
     </div>
+</div>
+        </div>
+    </div>
+    
 </div>
