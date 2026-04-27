@@ -7,17 +7,21 @@ import { Entradas } from './components/entradas/entradas';
 import { authGuard } from './guards/auth-guard';
 import { PanelProveedor } from './components/panel-proveedor/panel-proveedor';
 import { Registro } from './components/registro/registro';
+import { GestionUsuarios } from './components/dashboard/gestion-usuarios.component';
 import { GestionEntradas } from './components/gestion-entradas/gestion-entradas';
 import { MisEntradas } from "./components/mis-entradas/mis-entradas";
 
 // ¡NUEVO! Importamos el componente de compra
 import { Compra } from './components/compra/compra'; 
+import { AdminVentasComponent } from './components/dashboard/admin-ventas.component';
 
 export const routes: Routes = [
   { path: '', component: Home }, 
   { path: 'login', component: Login },
   { path: 'registro', component: Registro }, 
   { path: 'entradas', component: Entradas },
+  { path: 'gestion-usuarios', component: GestionUsuarios },
+  { path: 'admin/ventas', component: AdminVentasComponent },
   { path: 'panel-proveedor', component: PanelProveedor },
   { path: 'mis-entradas', component: MisEntradas },
 
@@ -30,6 +34,8 @@ export const routes: Routes = [
   
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
   { path: 'panel-user', component: PanelUser, canActivate: [authGuard] },
+    { path: 'gestion-usuarios', component: GestionUsuarios, canActivate: [authGuard] },
+    { path: 'admin/ventas', component: AdminVentasComponent , canActivate: [authGuard]},
   { path: 'gestion-entradas', component: GestionEntradas },
   { path: 'panel-proveedor', component: PanelProveedor, canActivate: [authGuard] }
 ];
