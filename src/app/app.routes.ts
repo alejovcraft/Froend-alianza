@@ -7,6 +7,7 @@ import { Entradas } from './components/entradas/entradas';
 import { authGuard } from './guards/auth-guard';
 import { PanelProveedor } from './components/panel-proveedor/panel-proveedor';
 import { Registro } from './components/registro/registro';
+import { GestionUsuarios } from './components/dashboard/gestion-usuarios.component';
 
 // ¡NUEVO! Importamos el componente de compra
 import { Compra } from './components/compra/compra'; 
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'registro', component: Registro }, 
   { path: 'entradas', component: Entradas },
+  { path: 'gestion-usuarios', component: GestionUsuarios },
 
   // ¡LA RUTA DE COMPRA AHORA ES REAL Y ESTÁ PROTEGIDA!
   { 

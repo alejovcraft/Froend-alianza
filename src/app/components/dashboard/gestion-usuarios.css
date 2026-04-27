@@ -1,0 +1,110 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 100% de la altura de la pantalla */
+}
+
+.bg-primary {
+  background-color: #002D56 !important;
+}
+
+.text-primary {
+  color: #002D56 !important;
+}
+
+main {
+  flex: 1; /* Esto hace que el contenido principal se expanda y mande al footer al fondo */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.jumbotron-header {
+  margin-top: 56px; /* Altura del navbar fixed */
+  background: linear-gradient(rgba(0, 45, 86, 0.9), rgba(0, 45, 86, 0.8)), 
+              url('/img/menuprincipal/fondon.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 1rem;
+  border-bottom: 3px solid #b4975a; /* Dorado */
+}
+
+.table {
+    margin-bottom: 0;
+    table-layout: fixed; /* Ayuda a respetar los anchos definidos */
+}
+
+.table-alianza {
+    background-color: #002D56;
+    color: red;
+}
+
+.table td, .table th {
+    padding: 12px 8px;
+    white-space: nowrap; /* Evita que el texto salte de línea */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.card-lista-usuarios {
+    border: 2px solid #b4975a; /* Borde azul institucional */
+    border-radius: 8px;
+    overflow: hidden; /* Para que el borde siga la forma redondeada */
+    background-color: #ffffff;
+}
+
+.rounded-pill {
+  transition: all 0.3s ease;
+}
+
+.rounded-pill:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.status-active { background-color: #198754; box-shadow: 0 0 5px #198754; }
+.status-inactive { background-color: #dc3545; box-shadow: 0 0 5px #dc3545; }
+
+.navbar.fixed-top {
+  z-index: 1030;
+}
+
+.table thead th {
+  border: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.swal2-toast {
+    border-left: 5px solid #b4975a !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-success {
+    background-color: #198754;
+    transition: 0.3s;
+}
+
+.btn-success:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.footer {
+  border-top: 3px solid #b4975a;
+}
