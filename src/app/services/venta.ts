@@ -16,4 +16,8 @@ export class VentaService {
   realizarCompra(datosCompra: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/procesar`, datosCompra);
   }
+
+  obtenerMisEntradas(username: string): Observable<any[]> {
+  return this.http.get<any[]>(`http://localhost:9090/api/ventas/usuario/${username}`);
+}
 }

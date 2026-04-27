@@ -2,12 +2,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Navbar } from '../navbar/navbar';
 import { EntradaService } from '../../services/entrada'; 
 
 @Component({
   selector: 'app-entradas',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,Navbar],
   templateUrl: './entradas.html',
   styleUrls: ['./entradas.css'] 
 })

@@ -1,10 +1,12 @@
-// 1. Agrega ChangeDetectorRef aquí
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router'; 
 import { FormsModule } from '@angular/forms'; 
 import { EntradaService } from '../../services/entrada';
 import { VentaService } from '../../services/venta'; 
+
+// Declaramos jQuery para el modal
+declare var $: any;
 
 @Component({
   selector: 'app-compra',
@@ -26,20 +28,20 @@ export class Compra implements OnInit {
     private router: Router, 
     private entradaService: EntradaService,
     private ventaService: VentaService,
-    private cdr: ChangeDetectorRef // 2. Inyectamos el despertador de Angular
+    private cdr: ChangeDetectorRef 
   ) {}
 
   ngOnInit(): void {
     const idEntrada = this.route.snapshot.paramMap.get('id');
     
     if (idEntrada) {
-      console.log("Buscando el partido con ID:", idEntrada); // Para ver en consola
+      console.log("Buscando el partido con ID:", idEntrada); 
       
       this.entradaService.obtenerEntradaPorId(idEntrada).subscribe({
         next: (data) => {
           console.log("¡Llegó la data de Spring Boot!", data);
           this.entrada = data;
-          this.cdr.detectChanges(); // 3. ¡EL PELLIZCO MÁGICO!
+          this.cdr.detectChanges(); 
         },
         error: (err) => {
           console.error("Error gigante al buscar la entrada:", err);
@@ -49,10 +51,9 @@ export class Compra implements OnInit {
     }
   }
 
-  // ... (Tus funciones cambiarCantidad y procesarCompra se quedan exactamente igual) ...
-
   cambiarCantidad(nuevaCantidad: number) {
     if (nuevaCantidad < 1) nuevaCantidad = 1;
+    if (nuevaCantidad > 4) nuevaCantidad = 4; 
     if (nuevaCantidad > this.entrada.cantidadDisponible) nuevaCantidad = this.entrada.cantidadDisponible;
     
     this.cantidadSeleccionada = nuevaCantidad;
@@ -67,39 +68,41 @@ export class Compra implements OnInit {
     }
   }
 
-  // ¡LA FUNCIÓN FINAL DE COMPRA!
   procesarCompra() {
-    // 1. Recuperamos quién está logueado
     const usuarioLogueado = localStorage.getItem('usuario_alianza');
-
     if (!usuarioLogueado) {
-      alert("Error: Sesión expirada. Vuelve a iniciar sesión.");
       this.router.navigate(['/login']);
       return;
     }
 
-    // 2. Armamos el "Paquete DTO" exacto que pide Spring Boot
     const paqueteCompra = {
       idEntrada: this.entrada.idEntrada,
       username: usuarioLogueado,
       cantidad: this.cantidadSeleccionada,
-      asistentes: this.listaDuenos // Como los (ngModel) del HTML se llaman igual que el DTO, encajan perfecto
+      asistentes: this.listaDuenos
     };
 
     console.log("Enviando a Spring Boot...", paqueteCompra);
 
-    // 3. Enviamos el paquete usando el servicio
     this.ventaService.realizarCompra(paqueteCompra).subscribe({
       next: (respuesta) => {
-        // ¡Si todo sale bien, mostramos el mensaje de éxito y lo mandamos al panel!
-        alert("🎉 " + respuesta.mensaje);
-        this.router.navigate(['/panel-user']); 
+        // ABRIMOS EL MODAL
+        $('#boletaModal').modal('show'); 
       },
       error: (err) => {
-        // Si hay error en el backend (ej. stock agotado o error SQL)
         console.error("Error del servidor:", err);
         alert("❌ Ocurrió un error: " + (err.error?.mensaje || "Revisa la consola"));
       }
     });
+  }
+
+  // ESTA ES LA FUNCIÓN QUE FALTABA AISLAR
+  irAMisEntradas() {
+    $('#boletaModal').modal('hide');
+    // Para evitar problemas con el backdrop del modal que a veces se queda pegado
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    
+    this.router.navigate(['/panel-user']);
   }
 }
