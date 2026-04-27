@@ -1,0 +1,75 @@
+:root {
+    --proveedor-azul: #004a99;
+    --proveedor-oscuro: #212529;
+    --proveedor-dorado: #B8A26A;
+    --proveedor-blanco: #ffffff;
+}
+
+/* Reemplaza al body para no afectar otras pantallas de Angular */
+.proveedor-bg {
+    /* IMPORTANTE: Asegúrate de que la ruta de tu imagen sea correcta en Angular */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                      url('/img/proveedor/proveedor.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh; /* Para que ocupe toda la pantalla */
+    padding-top: 80px; /* Espacio para el navbar fijo */
+    color: var(--proveedor-blanco);
+}
+
+.navbar-custom {
+    background-color: #2c2c2c !important; 
+}
+
+.card-menu {
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: var(--proveedor-blanco); 
+    border-left: 5px solid var(--proveedor-dorado);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 1px solid rgba(184, 162, 106, 0.4);
+    border-right: 1px solid rgba(184, 162, 106, 0.4);
+    border-bottom: 1px solid rgba(184, 162, 106, 0.4);
+}
+
+.card-menu:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(184, 162, 106, 0.5);
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.welcome-section {
+    padding: 3rem 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.welcome-section h1 {
+    color: var(--proveedor-dorado);
+    font-size: 2.5rem; 
+}
+
+.welcome-section p.lead {
+    font-size: 1.2rem;
+}
+
+.card-title {
+    color: var(--proveedor-blanco); 
+}
+
+.card-text {
+    color: #ccc; 
+}
+
+.card-menu .btn-info {
+    background-color: var(--proveedor-dorado);
+    border-color: var(--proveedor-dorado);
+    color: #333; 
+    font-weight: bold;
+}
+
+.card-menu .btn-info:hover {
+    background-color: #9A845C; 
+    border-color: #9A845C;
+    color: var(--proveedor-blanco); 
+}

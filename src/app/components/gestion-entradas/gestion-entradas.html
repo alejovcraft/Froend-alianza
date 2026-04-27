@@ -1,0 +1,107 @@
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Panel de Administración - Entradas</span>
+    <a class="btn btn-outline-light" routerLink="/panel-proveedor">Volver al Panel</a>
+</nav>
+
+<div class="container mt-5">
+
+    <div *ngIf="mostrarFormulario" class="card shadow border-info mb-5" style="max-width: 800px; margin: 0 auto;">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">{{ esEdicion ? 'Editar Partido' : 'Crear Nuevo Partido' }}</h4>
+            <button type="button" class="close text-white" (click)="cancelarFormulario()"><span>&times;</span></button>
+        </div>
+        <div class="card-body bg-light">
+            <form (ngSubmit)="guardarPartido()">
+                <div class="row">
+                    <div class="col-md-8 form-group mb-3">
+                        <label class="font-weight-bold">Nombre del Evento</label>
+                        <input type="text" class="form-control" name="evento" [(ngModel)]="partidoActual.evento" required>
+                    </div>
+                    <div class="col-md-4 form-group mb-3">
+                        <label class="font-weight-bold">Fecha</label>
+                        <input type="date" class="form-control" name="fecha" [(ngModel)]="partidoActual.fecha" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group mb-3">
+                        <label class="font-weight-bold">Ubicación / Tribuna</label>
+                        <select class="form-control" name="idUbicacion" [(ngModel)]="partidoActual.ubicacion.idUbicacion" required>
+                            <option value="Sur">Sur</option>
+                            <option value="Norte">Norte</option>
+                            <option value="Oriente">Oriente</option>
+                            <option value="Occidente">Occidente</option>
+                            <option value="Palco">Palco</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group mb-3">
+                        <label class="font-weight-bold">Precio (S/)</label>
+                        <input type="number" class="form-control" name="precio" [(ngModel)]="partidoActual.precio" required>
+                    </div>
+                    <div class="col-md-4 form-group mb-3">
+                        <label class="font-weight-bold">Stock</label>
+                        <input type="number" class="form-control" name="cantidadDisponible" [(ngModel)]="partidoActual.cantidadDisponible" required>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3 border-top pt-3">
+                    <button type="button" class="btn btn-secondary mr-2" (click)="cancelarFormulario()">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar Partido</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Gestión de Partidos</h2>
+            <button *ngIf="!mostrarFormulario" class="btn btn-success" (click)="abrirNuevoPartido()">
+                Registrar Nuevo Partido
+            </button>
+        </div>
+
+        <div class="card shadow">
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+    <thead class="bg-primary text-white">
+        <tr>
+            <th>ID</th>
+            <th>Evento / Partido</th>
+            <th>Ubicación</th> <th>Fecha</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let partido of listaPartidos">
+            <td class="align-middle text-muted"><strong>{{ partido.idEntrada }}</strong></td>
+            <td class="align-middle font-weight-bold">{{ partido.evento }}</td>
+            
+            <td class="align-middle">
+                <span class="badge badge-secondary p-2">{{ partido.ubicacion?.idUbicacion || 'Sin asignar' }}</span>
+            </td>
+            
+            <td class="align-middle">{{ partido.fecha }}</td>
+            <td class="align-middle text-success font-weight-bold">S/ {{ partido.precio }}</td>
+            <td class="align-middle">
+                <span class="badge badge-info p-2 text-dark font-weight-bold" style="font-size: 0.9rem;">
+                    {{ partido.cantidadDisponible }}
+                </span>
+            </td>
+            <td class="text-center align-middle">
+                <button class="btn btn-sm btn-outline-primary mr-2" (click)="abrirEditar(partido)">✏️ Editar</button>
+                <button class="btn btn-sm btn-outline-danger" (click)="borrarPartido(partido.idEntrada)">🗑️ Borrar</button>
+            </td>
+        </tr>
+        <tr *ngIf="listaPartidos.length === 0">
+            <td colspan="7" class="text-center py-5 text-muted"> <h5>No hay partidos registrados en el sistema.</h5>
+                <p>Haz clic en "Registrar Nuevo Partido" para comenzar.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+            </div>
+        </div>
+    </div>
+</div>

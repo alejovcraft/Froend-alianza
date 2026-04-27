@@ -1,0 +1,93 @@
+/* Contenedor principal con la imagen de fondo */
+.compra-bg {
+    /* 👇 PON AQUÍ LA RUTA DE TU IMAGEN 👇 */
+    background-image: linear-gradient(rgba(0, 26, 59, 0.7), rgba(0, 0, 0, 0.8)), 
+                      url('/img/compraentrada/banercompra2.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+/* El Azul Alianza Profundo para la barra superior */
+.navbar-alianza {
+    background-color: #001a3b !important;
+    border-bottom: 2px solid #B8A26A; /* Línea dorada sutil */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* TARJETA IZQUIERDA: Formulario (Vidrio Claro para legibilidad) */
+.glass-form {
+    /* Bajamos la opacidad de 0.92 a 0.65 */
+    background-color: rgba(255, 255, 255, 0.65); 
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Agregamos el desenfoque para que el texto se lea perfecto */
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); /* Soporte para Safari */
+    padding: 30px;
+}
+
+/* Título de la sección del formulario */
+.titulo-personaliza {
+    color: #001a3b;
+    font-weight: 800;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+/* TARJETA DERECHA: Resumen de Compra (Vidrio Oscuro VIP) */
+.glass-summary {
+    /* Bajamos la opacidad de 0.85 a 0.55 */
+    background-color: rgba(0, 26, 59, 0.55); 
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(184, 162, 106, 0.5); 
+    /* Aumentamos el desenfoque aquí también */
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    padding: 25px;
+}
+
+/* Encabezado del Resumen */
+.summary-header {
+    color: #B8A26A; /* Dorado */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(184, 162, 106, 0.3);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.glass-summary hr {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.text-gold {
+    color: #B8A26A !important;
+}
+
+/* Botón de Pago Modernizado */
+.btn-pagar {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    color: white;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-pagar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+}

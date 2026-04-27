@@ -1,34 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" routerLink="/panel-user">Alianza Lima</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" routerLink="/panel-user">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/entradas">Entradas</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Carrito</a></li>
-        </ul>
-        <ul class="navbar-nav">
-            <ng-container *ngIf="nombreUsuario">
-                <li class="nav-item text-light d-flex align-items-center mr-3">
-                    Bienvenido, <strong class="ml-1">{{ nombreUsuario | uppercase }}</strong>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-danger text-white" routerLink="/login">Cerrar Sesión</a> 
-                </li>
-            </ng-container>
-
-            <ng-container *ngIf="!nombreUsuario">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-light" routerLink="/login" style="border-radius: 0.25rem;">Login</a> 
-                </li>
-            </ng-container>
-        </ul>
-    </div>
-</nav>
+<app-navbar></app-navbar>
 
 <div id="entradas-container">
     
@@ -42,16 +12,17 @@
                 <div class="container text-center text-white py-5">
                     
                     <div class="d-flex justify-content-center align-items-center mb-3 flex-wrap">
-                        <img src="/img/compraentrada/alianzaentrada.png" class="mx-3 combo-logo" alt="Logo">
                         
-                        <h1 class="combo-title my-3">{{ entrada.evento }} - Zona {{ entrada.ubicacion?.lugar }}</h1>
+                        <h1 class="combo-title my-3">
+                            {{ entrada.evento }} - Zona {{ entrada.ubicacion?.idUbicacion || 'General' }}
+                        </h1>
                         
-                        <img src="/img/compraentrada/alianzaentrada2.png" class="mx-3 combo-logo" alt="Logo">
+                        <img src="/img/compraentrada/alianza_vslogo.png" alt="Logo" width="120" height="120">
                     </div>
 
                     <div class="combo-card mx-auto d-flex align-items-center justify-content-between p-3 flex-wrap">
                         <div class="d-flex align-items-center flex-wrap">
-                            <img src="/img/compraentrada/alianzaentrada3.png" class="combo-card-logo mr-3 mb-2 mb-md-0" alt="Ticket">
+                            <img src="/img/compraentrada/alianza_vslogo.png" class="combo-card-logo mr-3 mb-2 mb-md-0" alt="Ticket">
                             <div class="text-left">
                                 <p class="m-0 text-uppercase text-secondary small font-weight-bold">Fecha: {{ entrada.fecha }}</p>
                                 <h5 class="m-0 font-weight-bold">S/ {{ entrada.precio }} | Stock: {{ entrada.cantidadDisponible }}</h5>
