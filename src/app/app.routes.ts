@@ -7,6 +7,7 @@ import { Entradas } from './components/entradas/entradas';
 import { authGuard } from './guards/auth-guard';
 import { PanelProveedor } from './components/panel-proveedor/panel-proveedor';
 import { Registro } from './components/registro/registro';
+import { GestionUsuarios } from './components/dashboard/gestion-usuarios.component';
 import { GestionEntradas } from './components/gestion-entradas/gestion-entradas';
 import { MisEntradas } from "./components/mis-entradas/mis-entradas";
 
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'registro', component: Registro }, 
   { path: 'entradas', component: Entradas },
+  { path: 'gestion-usuarios', component: GestionUsuarios },
   { path: 'panel-proveedor', component: PanelProveedor },
   { path: 'mis-entradas', component: MisEntradas },
 

@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+/* Identidad Institucional Alianza Lima */
+:root {
+  --azul-alianza: #002D56;
+  --dorado-alianza: #b4975a;
+  --blanco: #ffffff;
+}
+
+.bg-alianza { background-color: var(--azul-alianza) !important; }
+.text-alianza { color: var(--azul-alianza); }
+.border-alianza { border-color: var(--azul-alianza) !important; }
+
+/* Estilos de Tabla Profesionales */
+.table-alianza {
+  background-color: var(--azul-alianza);
+  color: var(--blanco);
+}
+
+.table-alianza th {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* Indicadores de Estado */
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.status-active { background-color: #28a745; box-shadow: 0 0 8px rgba(40, 167, 69, 0.4); }
+.status-inactive { background-color: #dc3545; box-shadow: 0 0 8px rgba(220, 53, 69, 0.4); }
