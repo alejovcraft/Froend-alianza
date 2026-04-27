@@ -12,9 +12,6 @@
         <a class="nav-link" routerLink="/admin/ventas">Reporte de Ventas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/entradas">Gestión de Entradas</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" routerLink="/gestion-usuarios">Gestión de Usuarios y Roles</a>
       </li>
     </ul>
@@ -32,74 +29,78 @@
   </div>
 </nav>
 
-<div class="jumbotron text-center">
-  <h1 class="display-4">¡Bienvenidos al Portal Blanquiazul!</h1>
-  <p class="lead">Regístrate o inicia sesión para acceder a toda la información, comprar entradas y más.</p>
-  <hr class="my-4" style="border-top: 1px solid white;">
-  <a class="btn btn-intimo btn-lg" href="#" role="button">Hazte Íntimo</a>
-</div>
-
-<div class="seccion-partidos">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-12 mx-auto">
-        <div class="partido-header">PRÓXIMO PARTIDO</div>
-        <div class="text-muted small partido-detalle">LIGA 1 - CLAUSURA - FECHA 17</div>
-
-        <div class="row align-items-center justify-content-center mt-4">
-          <div class="col-4">
-            <img src="/img/menuprincipal/alianza.png" alt="Escudo Alianza" class="escudo-partido">
-            <div class="equipo-nombre">ALIANZA LIMA</div>
-          </div>
-          <div class="col-2">
-            <span class="vs-texto">VS</span>
-          </div>
-          <div class="col-4">
-            <img src="/img/menuprincipal/melgar.png" alt="Escudo Melgar" class="escudo-partido">
-            <div class="equipo-nombre">MELGAR</div>
-          </div>
-        </div>
-
-        <div class="partido-info-footer">
-          <span>Viernes 31 OCTUBRE</span> |
-          <span>8:00 PM</span> |
-          <span>Estadio Alejandro Villanueva</span> |
-          <span>Lima</span>
-        </div>
-      </div>
-    </div>
+<div class="jumbotron-admin text-center">
+  <div class="container py-5">
+    <h1 class="display-4 font-weight-bold">Consola de Control Administrativo</h1>
+    <p class="lead">Gestión integral de usuarios, reportes financieros y procesos comerciales del Club Alianza Lima.</p>
+    <hr class="my-4" style="border-top: 1px solid var(--alianza-dorado); width: 50%; margin: auto;">
+    <p class="h5">Bienvenido al núcleo del sistema, <strong>{{ nombreUsuarioLogeado }}</strong>.</p>
   </div>
 </div>
 
-<div class="banner-entradas">
-  <h2 class="display-4">¡Asegura tu lugar en Matute!</h2>
-  <p class="lead">Compra tus entradas para el próximo encuentro y alienta al equipo de tus amores.</p>
-  <a class="btn btn-entradas" href="#" role="button">ENTRADAS</a>
-</div>
-
-<div class="seccion-noticias">
+<div class="seccion-stats py-5 bg-light">
   <div class="container">
-    <div class="row mb-4">
-      <div class="col-12 text-center">
-        <h2 class="titulo-noticias">NOTICIAS RECIENTES</h2>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col-md-4 mb-4">
-        <a href="https://clubalianzalima.com.pe/#/noticias/noticia/acreditacion-noche-blanquiazul-de-voley-2025" target="_blank" class="card-noticia">
-          <img src="/img/menuprincipal/noticia1.jpg" alt="Noticia" class="card-img-top">
-          <div class="card-body">
-            <small class="text-muted">10/20/25, 5:04 PM</small>
-            <h5 class="card-title card-title-link mt-1">ACREDITACIÓN NOCHE BLANQUIAZUL DE VÓLEY 2025</h5>
-            <p class="card-text small text-secondary">Los interesados deberán completar el formulario oficial...</p>
+        <div class="card shadow-sm border-0 h-100 card-stat">
+          <div class="card-body text-center">
+            <div class="icon-circle bg-primary text-white mb-3 mx-auto">
+              <i class="bi bi-people-fill"></i>
+            </div>
+            <h5 class="text-muted">Usuarios Activos</h5>
+            <p class="display-6 font-weight-bold text-dark">1,250</p>
+            <a routerLink="/gestion-usuarios" class="btn btn-sm btn-outline-primary">Gestionar</a>
           </div>
-        </a>
+        </div>
       </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm border-0 h-100 card-stat">
+          <div class="card-body text-center">
+            <div class="icon-circle bg-success text-white mb-3 mx-auto">
+              <i class="bi bi-currency-dollar"></i>
+            </div>
+            <h5 class="text-muted">Recaudación Total</h5>
+            <p class="display-6 font-weight-bold text-dark">S/ 145,250</p>
+            <a routerLink="/admin/ventas" class="btn btn-sm btn-outline-success">Ver Reporte</a>
+          </div>
+        </div>
       </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm border-0 h-100 card-stat">
+          <div class="card-body text-center">
+            <div class="icon-circle bg-warning text-white mb-3 mx-auto">
+              <i class="bi bi-ticket-perforated"></i>
+            </div>
+            <h5 class="text-muted">Entradas Vendidas</h5>
+            <p class="display-6 font-weight-bold text-dark">3,250</p>
+            <span class="badge badge-info">Temporada 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="text-center py-3" style="background-color: var(--alianza-azul); color: var(--alianza-blanco); font-size: 0.8rem;">
-  &copy; {{ anioActual }} Club Alianza Lima. Todos los derechos reservados.
+<div class="banner-gestion py-5 text-white">
+  <div class="container text-center">
+    <h2 class="mb-4">Accesos de Gestión Rápida</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-3">
+        <button class="btn btn-dorado btn-lg btn-block py-3" routerLink="/admin/ventas">
+          <i class="bi bi-bar-chart-line-fill mr-2"></i> Auditar Ventas
+        </button>
+      </div>
+      <div class="col-md-4 mb-3">
+        <button class="btn btn-outline-light btn-lg btn-block py-3" routerLink="/gestion-usuarios">
+          <i class="bi bi-shield-lock-fill mr-2"></i> Roles y Permisos
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<footer class="footer bg-primary text-white text-center py-4 mt-auto">
+  <div class="container">
+    <p class="mb-0">&copy; 2026 Portal Blanquiazul - Área de TI</p>
+  </div>
+</footer>
