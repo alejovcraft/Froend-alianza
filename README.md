@@ -38,9 +38,20 @@ ng serve
 ```
 Esto levantará el servidor de desarrollo y podrás abrir tu proyecto en el navegador en http://localhost:4200.
 
-👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+```bash
+npm install jspdf
+```
+
+```bash
+npm install sweetalert2
+```
+
+```bash
+npm install chart.js
+```
+
+👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
 
 ## Code scaffolding
 
