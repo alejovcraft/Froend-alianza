@@ -1,0 +1,44 @@
+:host {
+    --alianza-azul: #002244;
+    --alianza-dorado: #B8A26A;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.bg-primary { background-color: var(--alianza-azul) !important; }
+
+/* Cabecera del Dashboard */
+.jumbotron-admin {
+    background-color: var(--alianza-azul);
+    border-bottom: 4px solid var(--alianza-dorado);
+    margin-top: 56px; /* Altura del navbar */
+}
+
+/* Tarjetas de Indicadores (Estilo Dashboard) */
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.border-left-dorado {
+    border-left: 5px solid var(--alianza-dorado) !important;
+}
+
+.border-left-azul {
+    border-left: 5px solid var(--alianza-azul) !important;
+}
+
+.text-xs {
+    font-size: .85rem;
+}
+
+/* Ajustes para el Canvas de Chart.js */
+.chart-container {
+    min-height: 300px;
+}
+
+.footer {
+  border-top: 3px solid #b4975a;
+}
+

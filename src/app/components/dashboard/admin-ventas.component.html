@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" routerLink="/dashboard">Alianza Admin</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Principal</a></li>
+      <li class="nav-item"><a class="nav-link active" routerLink="/admin-ventas.component">Reporte de Ventas</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/gestion-usuarios">Gestión de Usuarios y Roles</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item text-light d-flex align-items-center mr-3">
+        Bienvenido, <strong class="ml-1">{{ nombreUsuarioLogeado }}</strong>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link btn btn-outline-light text-white" (click)="cerrarSesion()" style="border-radius: 0.25rem; background: transparent;">
+          Cerrar Sesión
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="d-flex flex-column min-vh-100"></div>
+
+<main class="flex-grow-1">
+<div class="jumbotron-admin text-center mt-5">
+  <div class="container py-4">
+    <h2 class="display-5 fw-bold text-white mb-0">Ventas Institucionales</h2>
+    <p class="text-white-50 mb-0">Resumen financiero de Taquilla y Merchandising</p>
+  </div>
+</div>
+
+<div class="container-fluid px-4 my-4">
+  <div class="row mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card shadow-sm border-left-dorado py-2 h-100">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1" style="color: var(--alianza-azul);">Total Recaudado</div>
+              <div class="h3 mb-0 font-weight-bold text-dark">S/ {{ totalRecaudado | number:'1.2-2' }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-currency-dollar fa-2x text-muted"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card shadow-sm border-left-azul py-2 h-100">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1" style="color: var(--alianza-azul);">Entradas Vendidas</div>
+              <div class="h3 mb-0 font-weight-bold text-dark">{{ entradasVendidas }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-ticket-perforated fa-2x text-muted"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card shadow-sm border-left-dorado py-2 h-100">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1" style="color: var(--alianza-azul);">Productos Vendidos</div>
+              <div class="h3 mb-0 font-weight-bold text-dark">{{ productosVendidos }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-bag-check fa-2x text-muted"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white py-3">
+          <h6 class="m-0 font-weight-bold" style="color: var(--alianza-azul);">Evolución de Ingresos Mensuales</h6>
+        </div>
+        <div class="card-body">
+          <div class="chart-container" style="position: relative; height:300px; width:100%">
+            <canvas #chartVentasMensuales></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white py-3">
+          <h6 class="m-0 font-weight-bold" style="color: var(--alianza-azul);">Ingresos por Categoría</h6>
+        </div>
+        <div class="card-body">
+          <div class="chart-container" style="position: relative; height:300px; width:100%">
+            <canvas #chartCategorias></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="footer bg-primary text-white text-center py-4 mt-auto">
+  <div class="container">
+    <p class="mb-0">&copy; 2026 Portal Blanquiazul - Área de TI</p>
+  </div>
+</footer>
